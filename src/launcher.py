@@ -31,6 +31,14 @@ from SigProfilerAssignment import Analyzer as Analyze
               default=96,
               show_default=True,
               help="Required context type if input_type is vcf. context_type takes which context type of the input data is considered for assignment")
+@click.option("--collapse_to_SBS96", "collapse",
+              type=click.Choice(['True', 'False']),
+              metavar="BOOL",
+              show_choices=True,
+              required=False,
+              default='True',
+              show_default=True,
+              help="By default sigantures are collapsed to SBS96 context. Use this option to disable the collapsing to SBS96 context if you are using other context types")
 @click.option("--cosmic_version",
               type=click.Choice([1, 2, 3, 3.1, 3.2, 3.3, 3.4]),
               metavar="FLOAT",
@@ -89,14 +97,14 @@ from SigProfilerAssignment import Analyzer as Analyze
               default=False,
               show_default=True,
               help="	Prints detailed statements")
-def sig_profiler_assignment(samples, output, input_type, context_type, cosmic_version, exome, genome_build, signature_database, export_probabilities, export_probabilities_per_mutation, make_plots, sample_reconstruction_plots, verbose):
+def sig_profiler_assignment(samples, output, input_type, context_type, collapse, cosmic_version, exome, genome_build, signature_database, export_probabilities, export_probabilities_per_mutation, make_plots, sample_reconstruction_plots, verbose):
     
     """
     Run SigProfilerAssignment
     """
-    
+
     Analyze.cosmic_fit(samples, output, input_type=input_type,
-                       context_type=str(context_type), collapse_to_SBS96=True, 
+                       context_type=str(context_type), collapse_to_SBS96=collapse, 
                        cosmic_version=cosmic_version, exome=exome, genome_build=genome_build, 
                        signature_database=signature_database, exclude_signature_subgroups=None,
                        export_probabilities=export_probabilities, export_probabilities_per_mutation=export_probabilities_per_mutation,
