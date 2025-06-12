@@ -13,10 +13,19 @@ docker build -t sigprofilerassignment .
 ## Basic usage
 
 ```bash
+# For SBS
 docker run --rm -u $(id -u):$(id -g) \
            -v $(pwd):/home \
            -it sigprofilerassignment --samples /home/vcfs/ \
                                      --export_probabilities_per_mutation True
+
+# For ID
+docker run --rm -u $(id -u):$(id -g) \
+           -v $(pwd):/home \
+           -it sigprofilerassignment --samples /home/vcf/
+                                     --export_probabilities_per_mutation True \
+                                     --context_type ID \
+                                     --collapse_to_SBS96 False 
 ```
 
 ### Available options
@@ -28,6 +37,7 @@ docker run --rm -it sigprofilerassignment --help
 #   --output DIRECTORY              Path to the output folder  [default: /home]
 #   --input_type STRING             Three accepted input types: vcf (for vcf/maf files), seg (for different segmentation files) and matrix (for mutational matrix) [default: vcf]
 #   --context_type INT/STRING       Required context type if input_type is vcf. context_type takes which context type of the input data is considered for assignment [default: 96]
+#   --collapse_to_SBS96 BOOL        By default sigantures are collapsed to SBS96 context. Use this option to disable the collapsing to SBS96 context if you are using other context types [default: True]
 #   --cosmic_version FLOAT          Defines the version of the COSMIC reference signatures  [default: 3.4]
 #   --exome BOOLEAN                 Defines if the exome renormalized COSMIC signatures will be used  [default: False]
 #   --genome_build STRING           The reference genome build, used for select the appropriate version of the COSMIC reference signatures, as well as processing the mutation calling file/s  [default: GRCh37]
