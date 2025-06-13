@@ -1,11 +1,15 @@
 # docker-SigProfilerAssignment
 
-Dockerfile used to run [SigProfilerAssignment](https://github.com/AlexandrovLab/SigProfilerAssignment) (v.0.1.9) developed by AlexandrovLab.
+Dockerfile or python-venv used to run [SigProfilerAssignment](https://github.com/AlexandrovLab/SigProfilerAssignment) (v.0.1.9) developed by AlexandrovLab.
 
 ## Installation
 
 ```bash
+# Docker
 docker build -t sigprofilerassignment .
+
+# Python venv - needs python3.11
+bash venv.sh <path_to_venv>
 ```
 
 > *Only the GRCH37 database has been installed. Please modify the Dockerfile before building to install the desired genome.*
@@ -26,6 +30,11 @@ docker run --rm -u $(id -u):$(id -g) \
                                      --export_probabilities_per_mutation True \
                                      --context_type ID \
                                      --collapse_to_SBS96 False 
+
+# Using the python venv
+source <path_to_venv>/bin/activate
+python3 src/launcher.py sigprofilerassignment --samples /home/vcfs/ \
+                                               --export_probabilities_per_mutation True
 ```
 
 ### Available options
