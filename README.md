@@ -33,8 +33,8 @@ docker run --rm -u $(id -u):$(id -g) \
 
 # Using the python venv
 source <path_to_venv>/bin/activate
-python3 src/launcher.py sigprofilerassignment --samples /home/vcfs/ \
-                                               --export_probabilities_per_mutation True
+python3 src/launcher.py --samples /home/vcfs/ \
+                        --export_probabilities_per_mutation True
 ```
 
 ### Available options
