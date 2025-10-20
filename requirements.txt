@@ -1,4 +1,4 @@
 click==8.1.7
 tqdm==4.66.1
 setuptools==75.6.0
-SigProfilerAssignment==0.1.9
+SigProfilerAssignment==1.0.0

@@ -3,7 +3,7 @@
 path_to_venv=$1
 
 # Create the virtual environment
-python3.11 -m venv ${path_to_venv}
+python3.12 -m venv ${path_to_venv}
 
 # Activate the virtual environment
 source ${path_to_venv}/bin/activate
