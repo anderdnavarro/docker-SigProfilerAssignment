@@ -1,6 +1,6 @@
 # docker-SigProfilerAssignment
 
-Dockerfile or python-venv used to run [SigProfilerAssignment](https://github.com/AlexandrovLab/SigProfilerAssignment) (v.0.1.9) developed by AlexandrovLab.
+Dockerfile or python-venv used to run [SigProfilerAssignment](https://github.com/AlexandrovLab/SigProfilerAssignment) (v.1.0.0) developed by AlexandrovLab.
 
 ## Installation
 
@@ -8,7 +8,7 @@ Dockerfile or python-venv used to run [SigProfilerAssignment](https://github.com
 # Docker
 docker build -t sigprofilerassignment .
 
-# Python venv - needs python3.11
+# Python venv - needs python3.12
 bash venv.sh <path_to_venv>
 ```
 
